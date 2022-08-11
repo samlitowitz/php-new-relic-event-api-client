@@ -1,0 +1,12 @@
+
+version: "3.9"
+services:
+    php:
+        image: mobtitude/php-xdebug:7.2-cli
+        entrypoint: [ "/usr/local/bin/php" ]
+        ports:
+            - "9000:9000"
+        user: "${DOCKER_USER}"
+        volumes:
+            - ./:/app
+            - ./docker/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini

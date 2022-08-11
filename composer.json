@@ -1,0 +1,30 @@
+{
+    "name": "samlitowitz/php-new-relic-event-api-client",
+    "description": "PHP Client for the New Relic Event API",
+    "type": "library",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Sam Litowitz",
+            "email": "samlitowitz@users.noreply.github.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "sort-packages": true,
+    "autoload": {
+        "psr-4": {
+            "PhpNewRelic\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PhpNewRelic\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "php": ">=7.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    }
+}
