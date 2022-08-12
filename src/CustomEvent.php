@@ -26,7 +26,7 @@ final class CustomEvent implements \JsonSerializable
 			new Attribute\Value\String_($eventType)
 		);
 		$attributes->add($eventTypeAttribute);
-		return new self($eventType, $attributes);
+		return new self($eventTypeAttribute, $attributes);
 	}
 
 	public function jsonSerialize()
