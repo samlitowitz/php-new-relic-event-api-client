@@ -23,7 +23,12 @@ final class AttributeCollection implements \Countable, \Iterator, \JsonSerializa
 
 	public function jsonSerialize()
 	{
-		return $this->toArray();
+		$output = [];
+		/** @var Attribute $item */
+		foreach ($this->items as $item) {
+			$output[$item->getName()->getName()] = $item->getValue();
+		}
+		return $output;
 	}
 
 	public function toArray(): array
