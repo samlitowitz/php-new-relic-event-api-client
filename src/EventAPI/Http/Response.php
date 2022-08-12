@@ -20,21 +20,6 @@ class Response implements ResponseInterface
 		$this->setResponse($response);
 	}
 
-	public function __call(string $name, array $arguments)
-	{
-		if (!method_exists($this->response, $name)) {
-			throw new \RuntimeException(
-				sprintf(
-					'failed calling method %s on object of class %s',
-					$name,
-					get_class($this->response)
-				)
-			);
-		}
-		return call_user_func_array([$this->response, $name], $arguments);
-	}
-
-
 	public function getResponse(): ResponseInterface
 	{
 		return $this->response;
@@ -87,5 +72,77 @@ class Response implements ResponseInterface
 		if (is_string($uuid)) {
 			$this->setUuid($uuid);
 		}
+	}
+
+	// ResponseInterface
+	public function getStatusCode()
+	{
+		return $this->response->getStatusCode();
+	}
+
+	public function withStatus($code, $reasonPhrase = '')
+	{
+		return $this->response->withStatus($code, $http_response_header);
+	}
+
+	public function getReasonPhrase()
+	{
+		return $this->response->getReasonPhrase();
+	}
+
+	// MessageInterface
+	public function getProtocolVersion()
+	{
+		return $this->response->getProtocolVersion();
+	}
+
+	public function withProtocolVersion($version)
+	{
+		return $this->response->withProtocolVersion($version);
+	}
+
+	public function getHeaders()
+	{
+		return $this->response->getHeaders();
+	}
+
+	public function hasHeader($name)
+	{
+		return $this->response->hasHeader($name);
+	}
+
+	public function getHeader($name)
+	{
+		return $this->response->getHeader($name);
+	}
+
+	public function getHeaderLine($name)
+	{
+		return $this->response->getHeaderLine($name);
+	}
+
+	public function withHeader($name, $value)
+	{
+		return $this->response->withHeader($name, $value);
+	}
+
+	public function withAddedHeader($name, $value)
+	{
+		return $this->response->withAddedHeader($name, $value);
+	}
+
+	public function withoutHeader($name)
+	{
+		return $this->response->withoutHeader($name);
+	}
+
+	public function getBody()
+	{
+		return $this->response->getBody();
+	}
+
+	public function withBody(StreamInterface $body)
+	{
+		return $this->response->withBody($body);
 	}
 }
