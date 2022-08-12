@@ -33,7 +33,7 @@ final class Client implements \PhpNewRelic\EventAPI\Client
 		$this->setHttpClient($httpClient ?: new \GuzzleHttp\Client(['timeout' => 12]));
 	}
 
-	public function send(CustomEventCollection $customEvents): void
+	public function send(CustomEventCollection $customEvents): Response
 	{
 		$body = gzencode(json_encode($customEvents), 9);
 		if ($body === false) {
@@ -57,9 +57,7 @@ final class Client implements \PhpNewRelic\EventAPI\Client
 
 		switch ($response->getStatusCode()) {
 			case 200:
-				$responseBody = json_decode($response->getBody()->getContents(), true);
-
-				break;
+				return new Response($response);
 			default:
 				throw new SubmissionErrorException($request, $response);
 		}
