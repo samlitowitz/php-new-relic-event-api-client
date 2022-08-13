@@ -59,7 +59,7 @@ final class Client implements \PhpNewRelic\EventAPI\Client
 			case 200:
 				return new Response($response);
 			default:
-				throw new SubmissionErrorException($request, $response);
+				throw new SubmissionErrorException($request,  new Response($response));
 		}
 	}
 

@@ -3,20 +3,21 @@
 namespace PhpNewRelic\EventAPI\Http\Exception;
 
 use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Psr7\Response;
 use PhpNewRelic\EventAPI\Http\Exception;
+use Psr\Http\Message\ResponseInterface;
 
 final class SubmissionErrorException extends Exception
 {
 	/** @var Request */
 	private $request;
-	/** @var Response */
+	/** @var ResponseInterface */
 	private $response;
 
-	public function __construct(Request $request, Response $response)
+	public function __construct(Request $request, ResponseInterface $response)
 	{
 		$this->setRequest($request);
 		$this->setResponse($response);
+		$this->code = $response->getStatusCode();
 		$this->setMessageFromResponse();
 	}
 
@@ -30,12 +31,12 @@ final class SubmissionErrorException extends Exception
 		$this->request = $request;
 	}
 
-	public function getResponse(): Response
+	public function getResponse(): ResponseInterface
 	{
 		return $this->response;
 	}
 
-	private function setResponse(Response $response): void
+	private function setResponse(ResponseInterface $response): void
 	{
 		$this->response = $response;
 	}
