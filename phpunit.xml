@@ -4,11 +4,11 @@
 		 backupStaticAttributes="false" beStrictAboutTestsThatDoNotTestAnything="true" colors="true"
 		 convertErrorsToExceptions="true" convertNoticesToExceptions="true" convertWarningsToExceptions="true"
 		 failOnRisky="true" processIsolation="false" stopOnFailure="false" bootstrap="tests/bootstrap.php">
-	<coverage>
-		<include>
-			<directory>./src/</directory>
-		</include>
-	</coverage>
+	<filter>
+		<whitelist processUncoveredFilesFromWhitelist="true">
+			<directory suffix=".php">./src/</directory>
+		</whitelist>
+	</filter>
 	<testsuites>
 		<testsuite name="PHP New Relic Event API Test Suite">
 			<directory>./tests/</directory>
