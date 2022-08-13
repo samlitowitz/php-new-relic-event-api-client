@@ -10,3 +10,13 @@ services:
         volumes:
             - ./:/app
             - ./docker/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
+    phpunit:
+        image: mobtitude/php-xdebug:7.2-cli
+        entrypoint: [ "/usr/local/bin/php" ]
+        command: ["/app/vendor/bin/phpunit", "--coverage-html", "/app/assets", "--configuration", "/app/phpunit.xml"]
+        ports:
+            - "9000:9000"
+        user: "${DOCKER_USER}"
+        volumes:
+            - ./:/app
+            - ./docker/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
