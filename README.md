@@ -1,4 +1,4 @@
-# PHP New Relic EventAPI Client
+# PHP New Relic Event API Client
 
 ## Table of Contents
 
