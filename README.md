@@ -66,11 +66,11 @@ $events = CustomEventCollection::fromArray([
 			),
 			new CustomEvent\Attribute(
 				new CustomEvent\Attribute\Name('floatAttr'),
-				new CustomEvent\Attribute\Value\String_(2.1)
+				new CustomEvent\Attribute\Value\Float_(2.1)
 			),
 			new CustomEvent\Attribute(
 				new CustomEvent\Attribute\Name('intAttr'),
-				new CustomEvent\Attribute\Value\String_(2)
+				new CustomEvent\Attribute\Value\Integer(2)
 			),
 		]
 	),
